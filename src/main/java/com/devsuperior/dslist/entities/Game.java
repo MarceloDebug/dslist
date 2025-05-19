@@ -1,6 +1,7 @@
 package com.devsuperior.dslist.entities;
 
 import jakarta.persistence.*;
+import org.aspectj.weaver.loadtime.definition.Definition;
 
 import java.util.Objects;
 
@@ -16,22 +17,26 @@ public class Game {
     @Column(name = "game_year")
     private Integer year;
     private String genre;
-    private String plataforms;
+    private String platforms;
     private Double score;
     private String imgUrl;
+
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
     public Game(){}
     public Game(Long id, String title, Integer year, String genre, String imgUrl,
-                Double score, String plataforms, String longDescription, String shortDescription) {
+                Double score, String platforms, String longDescription, String shortDescription) {
         this.id = id;
         this.title = title;
         this.year = year;
         this.genre = genre;
         this.imgUrl = imgUrl;
         this.score = score;
-        this.plataforms = plataforms;
+        this.platforms = platforms;
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
     }
@@ -69,11 +74,11 @@ public class Game {
     }
 
     public String getPlataforms() {
-        return plataforms;
+        return platforms;
     }
 
     public void setPlataforms(String plataforms) {
-        this.plataforms = plataforms;
+        this.platforms = plataforms;
     }
 
     public Double getScore() {
